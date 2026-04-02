@@ -1,509 +1,165 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Usama Mushtaq | Application Developer</title>
-    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>💻</text></svg>">
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&display=swap');
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Usama Mushtaq | Developer</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: Arial, sans-serif;
+    }
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+    body {
+      background: linear-gradient(135deg, #0d0d0d, #161616, #1f1f1f);
+      color: #f5f5f5;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
 
-        body {
-            background-color: #0d1117;
-            color: #c9d1d9;
-            font-family: 'Fira Code', monospace;
-            min-height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            overflow-x: hidden;
-            position: relative;
-        }
+    .card {
+      width: 100%;
+      max-width: 430px;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 24px;
+      padding: 32px 24px;
+      text-align: center;
+      backdrop-filter: blur(10px);
+      box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+    }
 
-        /* Background Animation */
-        body::before {
-            content: '';
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: 
-                radial-gradient(ellipse at 20% 50%, rgba(120, 40, 200, 0.08) 0%, transparent 50%),
-                radial-gradient(ellipse at 80% 20%, rgba(255, 69, 96, 0.06) 0%, transparent 50%),
-                radial-gradient(ellipse at 40% 80%, rgba(0, 200, 150, 0.05) 0%, transparent 50%);
-            z-index: 0;
-            animation: bgShift 15s ease-in-out infinite alternate;
-        }
+    .tag {
+      display: inline-block;
+      font-size: 13px;
+      color: #bdbdbd;
+      background: rgba(255,255,255,0.06);
+      padding: 8px 14px;
+      border-radius: 999px;
+      margin-bottom: 18px;
+      letter-spacing: 0.5px;
+    }
 
-        @keyframes bgShift {
-            0% { opacity: 0.6; }
-            50% { opacity: 1; }
-            100% { opacity: 0.6; }
-        }
+    h1 {
+      font-size: 30px;
+      margin-bottom: 10px;
+      color: #ffffff;
+    }
 
-        /* Floating Particles */
-        .particles {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: 0;
-            pointer-events: none;
-        }
+    .subtitle {
+      font-size: 16px;
+      color: #d0d0d0;
+      margin-bottom: 18px;
+      line-height: 1.6;
+    }
 
-        .particle {
-            position: absolute;
-            width: 2px;
-            height: 2px;
-            background: rgba(255, 69, 96, 0.3);
-            border-radius: 50%;
-            animation: float linear infinite;
-        }
+    .highlight {
+      color: #f0b78b;
+      font-weight: bold;
+    }
 
-        .particle:nth-child(1) { left: 10%; animation-duration: 20s; animation-delay: 0s; top: 100%; }
-        .particle:nth-child(2) { left: 25%; animation-duration: 25s; animation-delay: 2s; top: 100%; background: rgba(120, 40, 200, 0.3); }
-        .particle:nth-child(3) { left: 40%; animation-duration: 18s; animation-delay: 4s; top: 100%; }
-        .particle:nth-child(4) { left: 55%; animation-duration: 22s; animation-delay: 1s; top: 100%; background: rgba(0, 200, 150, 0.3); }
-        .particle:nth-child(5) { left: 70%; animation-duration: 28s; animation-delay: 3s; top: 100%; }
-        .particle:nth-child(6) { left: 85%; animation-duration: 19s; animation-delay: 5s; top: 100%; background: rgba(120, 40, 200, 0.3); }
-        .particle:nth-child(7) { left: 15%; animation-duration: 24s; animation-delay: 6s; top: 100%; }
-        .particle:nth-child(8) { left: 60%; animation-duration: 21s; animation-delay: 7s; top: 100%; background: rgba(0, 200, 150, 0.3); }
+    .desc {
+      font-size: 14px;
+      color: #b8b8b8;
+      line-height: 1.7;
+      margin-bottom: 28px;
+    }
 
-        @keyframes float {
-            0% { transform: translateY(0) rotate(0deg); opacity: 0; }
-            10% { opacity: 1; }
-            90% { opacity: 1; }
-            100% { transform: translateY(-100vh) rotate(720deg); opacity: 0; }
-        }
+    .buttons {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      margin-bottom: 24px;
+    }
 
-        .container {
-            position: relative;
-            z-index: 1;
-            width: 92%;
-            max-width: 520px;
-            padding: 20px;
-        }
+    .btn {
+      display: block;
+      text-decoration: none;
+      color: #fff;
+      background: linear-gradient(135deg, #f0b78b, #d89b6c);
+      padding: 15px 18px;
+      border-radius: 14px;
+      font-size: 16px;
+      font-weight: bold;
+      transition: 0.25s ease;
+      box-shadow: 0 6px 18px rgba(240, 183, 139, 0.25);
+    }
 
-        /* Code Editor Window */
-        .editor {
-            background: #161b22;
-            border: 1px solid #30363d;
-            border-radius: 12px;
-            overflow: hidden;
-            box-shadow: 
-                0 16px 70px rgba(0, 0, 0, 0.5),
-                0 0 40px rgba(255, 69, 96, 0.03);
-        }
+    .btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 22px rgba(240, 183, 139, 0.35);
+    }
 
-        /* Title Bar */
-        .title-bar {
-            background: #1c2129;
-            padding: 12px 16px;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            border-bottom: 1px solid #30363d;
-        }
+    .btn.secondary {
+      background: rgba(255,255,255,0.08);
+      color: #f3f3f3;
+      box-shadow: none;
+      border: 1px solid rgba(255,255,255,0.08);
+    }
 
-        .dot {
-            width: 12px;
-            height: 12px;
-            border-radius: 50%;
-        }
-        .dot.red { background: #ff5f57; }
-        .dot.yellow { background: #ffbd2e; }
-        .dot.green { background: #28c840; }
+    .btn.secondary:hover {
+      background: rgba(255,255,255,0.12);
+    }
 
-        .file-name {
-            margin-left: 12px;
-            font-size: 12px;
-            color: #7d8590;
-            font-family: 'Fira Code', monospace;
-        }
+    .footer {
+      margin-top: 10px;
+      font-size: 13px;
+      color: #8f8f8f;
+      line-height: 1.6;
+    }
 
-        /* Code Content */
-        .code-content {
-            padding: 24px 20px;
-        }
+    .code-line {
+      color: #8ecae6;
+      font-size: 13px;
+      margin-bottom: 14px;
+      letter-spacing: 0.3px;
+    }
 
-        .line {
-            display: flex;
-            align-items: flex-start;
-            margin-bottom: 4px;
-            min-height: 24px;
-        }
+    @media (max-width: 480px) {
+      .card {
+        padding: 28px 18px;
+      }
 
-        .line-number {
-            color: #484f58;
-            font-size: 12px;
-            width: 30px;
-            text-align: right;
-            margin-right: 16px;
-            user-select: none;
-            flex-shrink: 0;
-            line-height: 24px;
-        }
+      h1 {
+        font-size: 26px;
+      }
 
-        .line-code {
-            font-size: 13.5px;
-            line-height: 24px;
-            flex: 1;
-        }
-
-        /* Syntax Colors */
-        .keyword { color: #ff7b72; }
-        .class-name { color: #7ee787; }
-        .type { color: #79c0ff; }
-        .variable { color: #c9d1d9; }
-        .string { color: #ffa657; }
-        .comment { color: #484f58; font-style: italic; }
-        .bracket { color: #8b949e; }
-        .operator { color: #ff7b72; }
-        .punctuation { color: #8b949e; }
-
-        /* Cursor Blink */
-        .cursor {
-            display: inline-block;
-            width: 2px;
-            height: 16px;
-            background: #58a6ff;
-            margin-left: 2px;
-            animation: blink 1s step-end infinite;
-            vertical-align: middle;
-        }
-
-        @keyframes blink {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0; }
-        }
-
-        /* Divider */
-        .divider {
-            height: 1px;
-            background: linear-gradient(90deg, transparent, #30363d, transparent);
-            margin: 20px 0;
-        }
-
-        /* Section Title */
-        .section-comment {
-            text-align: center;
-            padding: 20px 20px 0 20px;
-        }
-
-        .section-comment span {
-            color: #484f58;
-            font-style: italic;
-            font-size: 13px;
-        }
-
-        /* Link Buttons */
-        .links-section {
-            padding: 16px 20px 24px 20px;
-        }
-
-        .link-btn {
-            display: flex;
-            align-items: center;
-            padding: 14px 18px;
-            margin: 10px 0;
-            background: #0d1117;
-            border: 1px solid #30363d;
-            border-radius: 8px;
-            text-decoration: none;
-            font-family: 'Fira Code', monospace;
-            font-size: 13.5px;
-            color: #c9d1d9;
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .link-btn::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.03), transparent);
-            transition: left 0.5s ease;
-        }
-
-        .link-btn:hover::before {
-            left: 100%;
-        }
-
-        .link-btn:hover {
-            border-color: #58a6ff;
-            background: #161b22;
-            transform: translateX(4px);
-            box-shadow: 0 0 20px rgba(88, 166, 255, 0.1);
-        }
-
-        .link-btn .icon {
-            font-size: 18px;
-            margin-right: 14px;
-            width: 24px;
-            text-align: center;
-        }
-
-        .link-btn .arrow {
-            margin-left: auto;
-            color: #484f58;
-            transition: all 0.3s ease;
-            font-size: 14px;
-        }
-
-        .link-btn:hover .arrow {
-            color: #58a6ff;
-            transform: translateX(4px);
-        }
-
-        /* Individual button hover colors */
-        .link-linkedin:hover {
-            border-color: #0a66c2;
-            box-shadow: 0 0 20px rgba(10, 102, 194, 0.15);
-        }
-        .link-linkedin:hover .arrow { color: #0a66c2; }
-
-        .link-github:hover {
-            border-color: #7ee787;
-            box-shadow: 0 0 20px rgba(126, 231, 135, 0.1);
-        }
-        .link-github:hover .arrow { color: #7ee787; }
-
-        .link-cv:hover {
-            border-color: #ffa657;
-            box-shadow: 0 0 20px rgba(255, 166, 87, 0.15);
-        }
-        .link-cv:hover .arrow { color: #ffa657; }
-
-        /* Footer */
-        .footer {
-            text-align: center;
-            padding: 20px;
-            border-top: 1px solid #30363d;
-        }
-
-        .footer-text {
-            font-size: 11px;
-            color: #484f58;
-            line-height: 20px;
-        }
-
-        .footer-text a {
-            color: #58a6ff;
-            text-decoration: none;
-        }
-
-        .footer-text a:hover {
-            text-decoration: underline;
-        }
-
-        /* Status Bar */
-        .status-bar {
-            background: #1c2129;
-            padding: 6px 16px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            border-top: 1px solid #30363d;
-            font-size: 11px;
-            color: #484f58;
-        }
-
-        .status-dot {
-            display: inline-block;
-            width: 8px;
-            height: 8px;
-            background: #28c840;
-            border-radius: 50%;
-            margin-right: 6px;
-            animation: pulse 2s ease-in-out infinite;
-        }
-
-        @keyframes pulse {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0.5; }
-        }
-
-        /* Mobile Responsive */
-        @media (max-width: 480px) {
-            .container {
-                width: 96%;
-                padding: 12px;
-            }
-            .code-content {
-                padding: 16px 12px;
-            }
-            .line-code {
-                font-size: 12px;
-            }
-            .line-number {
-                font-size: 11px;
-                width: 24px;
-                margin-right: 10px;
-            }
-            .link-btn {
-                padding: 12px 14px;
-                font-size: 12.5px;
-            }
-        }
-
-        /* Fade In Animation */
-        .editor {
-            animation: fadeInUp 0.8s ease-out;
-        }
-
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .link-btn:nth-child(1) { animation: fadeInUp 0.8s ease-out 0.3s both; }
-        .link-btn:nth-child(2) { animation: fadeInUp 0.8s ease-out 0.5s both; }
-        .link-btn:nth-child(3) { animation: fadeInUp 0.8s ease-out 0.7s both; }
-    </style>
+      .btn {
+        font-size: 15px;
+        padding: 14px 16px;
+      }
+    }
+  </style>
 </head>
 <body>
-
-    <!-- Floating Particles -->
-    <div class="particles">
-        <div class="particle"></div>
-        <div class="particle"></div>
-        <div class="particle"></div>
-        <div class="particle"></div>
-        <div class="particle"></div>
-        <div class="particle"></div>
-        <div class="particle"></div>
-        <div class="particle"></div>
+  <div class="card">
+    <div class="code-line">// Build & Deliver</div>
+    <div class="tag">Software Developer</div>
+    <h1>Usama Mushtaq</h1>
+    <div class="subtitle">
+      Android / Application Developer with a passion for building <span class="highlight">clean</span>, <span class="highlight">functional</span>, and <span class="highlight">user-focused</span> software.
     </div>
 
-    <div class="container">
-        <div class="editor">
-
-            <!-- Title Bar (like VS Code) -->
-            <div class="title-bar">
-                <div class="dot red"></div>
-                <div class="dot yellow"></div>
-                <div class="dot green"></div>
-                <span class="file-name">developer.java</span>
-            </div>
-
-            <!-- Code Content -->
-            <div class="code-content">
-                <div class="line">
-                    <span class="line-number">1</span>
-                    <span class="line-code">
-                        <span class="comment">// Build & Deliver</span>
-                    </span>
-                </div>
-                <div class="line">
-                    <span class="line-number">2</span>
-                    <span class="line-code">
-                        <span class="keyword">public class</span> <span class="class-name">SoftwareDeveloper</span> <span class="bracket">{</span>
-                    </span>
-                </div>
-                <div class="line">
-                    <span class="line-number">3</span>
-                    <span class="line-code"></span>
-                </div>
-                <div class="line">
-                    <span class="line-number">4</span>
-                    <span class="line-code">
-                        &nbsp;&nbsp;<span class="type">String</span> <span class="variable">name</span> <span class="operator">=</span> <span class="string">"Usama Mushtaq"</span><span class="punctuation">;</span>
-                    </span>
-                </div>
-                <div class="line">
-                    <span class="line-number">5</span>
-                    <span class="line-code">
-                        &nbsp;&nbsp;<span class="type">String</span> <span class="variable">title</span> <span class="operator">=</span> <span class="string">"Application Developer"</span><span class="punctuation">;</span>
-                    </span>
-                </div>
-                <div class="line">
-                    <span class="line-number">6</span>
-                    <span class="line-code"></span>
-                </div>
-                <div class="line">
-                    <span class="line-number">7</span>
-                    <span class="line-code">
-                        &nbsp;&nbsp;<span class="type">String[]</span> <span class="variable">skills</span> <span class="operator">=</span> <span class="bracket">{</span><span class="string">"Kotlin"</span><span class="punctuation">,</span> <span class="string">"Java"</span><span class="punctuation">,</span> <span class="string">"C++"</span><span class="punctuation">,</span> <span class="string">"C"</span><span class="bracket">}</span><span class="punctuation">;</span>
-                    </span>
-                </div>
-                <div class="line">
-                    <span class="line-number">8</span>
-                    <span class="line-code"></span>
-                </div>
-                <div class="line">
-                    <span class="line-number">9</span>
-                    <span class="line-code">
-                        &nbsp;&nbsp;<span class="type">String</span> <span class="variable">email</span> <span class="operator">=</span> <span class="string">"usamae017@gmail.com"</span><span class="punctuation">;</span>
-                    </span>
-                </div>
-                <div class="line">
-                    <span class="line-number">10</span>
-                    <span class="line-code">
-                        &nbsp;&nbsp;<span class="type">String</span> <span class="variable">phone</span> <span class="operator">=</span> <span class="string">"+92-306-9816140"</span><span class="punctuation">;</span><span class="cursor"></span>
-                    </span>
-                </div>
-                <div class="line">
-                    <span class="line-number">11</span>
-                    <span class="line-code">
-                        <span class="bracket">}</span>
-                    </span>
-                </div>
-            </div>
-
-            <!-- Divider -->
-            <div class="divider"></div>
-
-            <!-- Links Section -->
-            <div class="section-comment">
-                <span class="comment">// connect with me</span>
-            </div>
-
-            <div class="links-section">
-                <a href="https://www.linkedin.com/in/TUMHARA-LINKEDIN-ID" target="_blank" class="link-btn link-linkedin">
-                    <span class="icon">🔗</span>
-                    <span>LinkedIn.connect<span class="bracket">(</span><span class="bracket">)</span></span>
-                    <span class="arrow">→</span>
-                </a>
-
-                <a href="https://github.com/TUMHARA-GITHUB-USERNAME" target="_blank" class="link-btn link-github">
-                    <span class="icon">📂</span>
-                    <span>GitHub.explore<span class="bracket">(</span><span class="bracket">)</span></span>
-                    <span class="arrow">→</span>
-                </a>
-
-                <a href="https://TUMHARA-CV-LINK-YAHAN" target="_blank" class="link-btn link-cv">
-                    <span class="icon">📄</span>
-                    <span>Resume.download<span class="bracket">(</span><span class="bracket">)</span></span>
-                    <span class="arrow">→</span>
-                </a>
-            </div>
-
-            <!-- Status Bar -->
-            <div class="status-bar">
-                <span><span class="status-dot"></span>Available for hire</span>
-                <span>Java • UTF-8</span>
-            </div>
-
-        </div>
+    <div class="desc">
+      Explore my professional profile, projects, and resume using the links below.
+      If you are hiring, collaborating, or networking, I would be glad to connect.
     </div>
 
+    <div class="buttons">
+      <a class="btn" href="https://www.linkedin.com/in/YOUR-LINKEDIN-USERNAME" target="_blank">View LinkedIn</a>
+      <a class="btn secondary" href="https://github.com/YOUR-GITHUB-USERNAME" target="_blank">Visit GitHub</a>
+      <a class="btn secondary" href="resume.pdf" target="_blank">Download CV</a>
+    </div>
+
+    <div class="footer">
+      Email: usamae017@gmail.com<br />
+      Phone: +92-XXX-XXXXXXX
+    </div>
+  </div>
 </body>
-  </html>
+      </html>

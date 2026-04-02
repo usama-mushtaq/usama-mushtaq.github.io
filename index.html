@@ -26,10 +26,18 @@
 
         * { margin:0; padding:0; box-sizing:border-box; }
 
+        html, body {
+            width: 100%;
+            min-height: 100%;
+        }
+
         body {
             background: var(--bg);
             color: var(--text);
             font-family: 'Inter', -apple-system, sans-serif;
+            min-height: 100vh;
+            min-height: 100dvh;
+            overflow-x: hidden;
             -webkit-font-smoothing: antialiased;
         }
 
@@ -38,6 +46,7 @@
             inset: 0;
             z-index: 0;
             overflow: hidden;
+            pointer-events: none;
         }
 
         .orb {
@@ -82,28 +91,32 @@
                 linear-gradient(90deg, rgba(255,255,255,0.012) 1px, transparent 1px);
             background-size: 70px 70px;
             z-index: 0;
+            pointer-events: none;
         }
 
         .noise {
             position: fixed; inset: 0; z-index: 0;
             opacity: 0.025;
+            pointer-events: none;
             background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
         }
 
         .main {
-            position: relative; z-index: 1;
+            position: relative;
+            z-index: 1;
+            width: 100%;
+            min-height: 100vh;
+            min-height: 100dvh;
             display: flex;
             flex-direction: column;
             align-items: center;
-            justify-content: center;
-            height: 100vh;
-            height: 100dvh;
-            padding: 16px 20px 12vh 20px;
+            justify-content: flex-start;
+            padding: 54px 20px 24px;
         }
 
         .avatar-wrap {
             position: relative;
-            margin-bottom: 24px;
+            margin-bottom: 28px;
         }
 
         .avatar-ring {
@@ -159,24 +172,15 @@
         }
 
         .status-dot::before {
-            content: '';
-            position: absolute;
-            inset: -4px;
-            border-radius: 50%;
-            border: 2px solid rgba(34,197,94,0.6);
-            animation: ping 2s cubic-bezier(0,0,0.2,1) infinite;
-        }
-
-        @keyframes ping {
-            75%,100% { transform: scale(2.2); opacity: 0; }
+            display: none;
         }
 
         .name {
-            font-size: 40px;
+            font-size: 38px;
             font-weight: 800;
             letter-spacing: -2px;
             text-align: center;
-            margin-bottom: 10px;
+            margin-bottom: 12px;
             background: linear-gradient(135deg, #ffffff 0%, #a1a1aa 40%, #ffffff 80%);
             background-size: 200% 200%;
             -webkit-background-clip: text;
@@ -199,7 +203,7 @@
 
         .title-text {
             font-family: 'JetBrains Mono', monospace;
-            font-size: 15px;
+            font-size: 14px;
             color: var(--purple);
             font-weight: 500;
         }
@@ -220,7 +224,7 @@
             font-size: 14px;
             color: var(--muted);
             text-align: center;
-            margin-bottom: 18px;
+            margin-bottom: 22px;
             max-width: 320px;
             line-height: 1.5;
         }
@@ -233,10 +237,10 @@
             border-radius: 100px;
             background: rgba(34,197,94,0.07);
             border: 1px solid rgba(34,197,94,0.15);
-            font-size: 13px;
+            font-size: 12px;
             color: #4ade80;
             font-weight: 500;
-            margin-bottom: 30px;
+            margin-bottom: 32px;
             letter-spacing: 0.3px;
         }
 
@@ -244,6 +248,9 @@
             width: 7px; height: 7px;
             background: #22c55e;
             border-radius: 50%;
+            opacity: 1;
+            transform: none;
+            animation: none;
         }
 
         .cta-group {
@@ -271,20 +278,11 @@
             outline: none;
         }
 
-        .cta:focus {
+        .cta:focus,
+        .cta:focus-visible,
+        .cta:active {
             outline: none;
-            border-color: var(--border);
             box-shadow: none;
-            background: var(--card-bg);
-            transform: none;
-        }
-
-        .cta:focus:not(:focus-visible) {
-            outline: none;
-            border-color: var(--border);
-            box-shadow: none;
-            background: var(--card-bg);
-            transform: none;
         }
 
         .cta::before {
@@ -296,49 +294,35 @@
             transition: left 0.6s ease;
         }
 
-        @media (hover: hover) and (pointer: fine) {
-            .cta:hover::before { left: 100%; }
+        .cta:hover::before { left: 100%; }
 
-            .cta:hover {
-                transform: translateY(-4px);
-                border-color: transparent;
-            }
-
-            .cta-ln:hover {
-                background: rgba(10,102,194,0.08);
-                box-shadow:
-                    0 12px 40px rgba(10,102,194,0.18),
-                    0 0 0 1px rgba(10,102,194,0.35),
-                    inset 0 1px 0 rgba(255,255,255,0.05);
-            }
-
-            .cta-gh:hover {
-                background: rgba(126,231,135,0.05);
-                box-shadow:
-                    0 12px 40px rgba(126,231,135,0.12),
-                    0 0 0 1px rgba(126,231,135,0.25),
-                    inset 0 1px 0 rgba(255,255,255,0.05);
-            }
-
-            .cta-cv:hover {
-                background: rgba(251,146,60,0.06);
-                box-shadow:
-                    0 12px 40px rgba(251,146,60,0.15),
-                    0 0 0 1px rgba(251,146,60,0.3),
-                    inset 0 1px 0 rgba(255,255,255,0.05);
-            }
-
-            .cta:hover .cta-icon { transform: scale(1.1) rotate(-3deg); }
-
-            .cta:hover .cta-arrow { transform: translateX(6px); }
-            .cta-ln:hover .cta-arrow { color: #3b82f6; }
-            .cta-gh:hover .cta-arrow { color: #7ee787; }
-            .cta-cv:hover .cta-arrow { color: #fb923c; }
+        .cta:hover {
+            transform: translateY(-4px);
+            border-color: transparent;
         }
 
-        .cta:active {
-            transform: scale(0.98);
-            transition: transform 0.1s ease;
+        .cta-ln:hover {
+            background: rgba(10,102,194,0.08);
+            box-shadow:
+                0 12px 40px rgba(10,102,194,0.18),
+                0 0 0 1px rgba(10,102,194,0.35),
+                inset 0 1px 0 rgba(255,255,255,0.05);
+        }
+
+        .cta-gh:hover {
+            background: rgba(126,231,135,0.05);
+            box-shadow:
+                0 12px 40px rgba(126,231,135,0.12),
+                0 0 0 1px rgba(126,231,135,0.25),
+                inset 0 1px 0 rgba(255,255,255,0.05);
+        }
+
+        .cta-cv:hover {
+            background: rgba(251,146,60,0.06);
+            box-shadow:
+                0 12px 40px rgba(251,146,60,0.15),
+                0 0 0 1px rgba(251,146,60,0.3),
+                inset 0 1px 0 rgba(255,255,255,0.05);
         }
 
         .cta-icon {
@@ -351,6 +335,8 @@
             transition: transform 0.3s ease;
         }
 
+        .cta:hover .cta-icon { transform: scale(1.1) rotate(-3deg); }
+
         .cta-ln .cta-icon { background: rgba(10,102,194,0.12); }
         .cta-gh .cta-icon { background: rgba(255,255,255,0.06); }
         .cta-cv .cta-icon { background: rgba(251,146,60,0.1); }
@@ -362,7 +348,7 @@
         .cta-body { flex: 1; }
 
         .cta-label {
-            font-size: 16px;
+            font-size: 15px;
             font-weight: 600;
             margin-bottom: 3px;
         }
@@ -378,6 +364,11 @@
             color: var(--dim);
             transition: all 0.3s ease;
         }
+
+        .cta:hover .cta-arrow { transform: translateX(6px); }
+        .cta-ln:hover .cta-arrow { color: #3b82f6; }
+        .cta-gh:hover .cta-arrow { color: #7ee787; }
+        .cta-cv:hover .cta-arrow { color: #fb923c; }
 
         .rv {
             opacity: 0;
@@ -399,22 +390,63 @@
         }
 
         @media(max-width:480px){
-            .main{padding:16px 16px 14vh 16px}
-            .name{font-size:32px;letter-spacing:-1.2px}
-            .title-text{font-size:14px}
-            .tagline{font-size:14px}
-            .cta{padding:16px 18px;border-radius:14px}
-            .cta-icon{width:42px;height:42px;border-radius:10px}
-            .cta-icon svg{width:20px;height:20px}
-            .cta-label{font-size:15px}
+            .main{
+                padding: 42px 16px 20px;
+            }
+            .avatar-wrap{
+                margin-bottom: 22px;
+            }
+            .name{
+                font-size:30px;
+                letter-spacing:-1.2px;
+            }
+            .title-text{
+                font-size:13px;
+            }
+            .tagline{
+                font-size:13px;
+                margin-bottom: 18px;
+            }
+            .badge{
+                margin-bottom: 24px;
+            }
+            .cta{
+                padding:15px 18px;
+                border-radius:14px;
+            }
+            .cta-icon{
+                width:40px;
+                height:40px;
+                border-radius:10px;
+            }
+            .cta-icon svg{
+                width:20px;
+                height:20px;
+            }
         }
 
         @media(min-width:768px){
-            .name{font-size:48px}
-            .title-text{font-size:16px}
-            .tagline{font-size:15px}
-            .cta-label{font-size:17px}
-            .cta-sub{font-size:13px}
+            .name{font-size:46px}
+            .main{padding-top: 64px;}
+        }
+
+        @media (max-height: 760px) {
+            .main {
+                padding-top: 28px;
+                padding-bottom: 16px;
+            }
+
+            .avatar-wrap {
+                margin-bottom: 20px;
+            }
+
+            .tagline {
+                margin-bottom: 18px;
+            }
+
+            .badge {
+                margin-bottom: 22px;
+            }
         }
     </style>
 </head>
@@ -510,12 +542,9 @@
         }
         setTimeout(type, 1200);
 
-        document.addEventListener('touchstart', function(e) {
-            if (!e.target.closest('.cta')) {
-                document.querySelectorAll('.cta').forEach(function(btn) {
-                    btn.blur();
-                });
-            }
+        document.querySelectorAll('.cta').forEach(link => {
+            link.addEventListener('mouseup', () => link.blur());
+            link.addEventListener('touchend', () => link.blur());
         });
     </script>
 

@@ -98,7 +98,7 @@
             justify-content: center;
             height: 100vh;
             height: 100dvh;
-            padding: 20px 20px;
+            padding: 16px 20px 12vh 20px;
         }
 
         .avatar-wrap {
@@ -172,7 +172,7 @@
         }
 
         .name {
-            font-size: 38px;
+            font-size: 40px;
             font-weight: 800;
             letter-spacing: -2px;
             text-align: center;
@@ -193,13 +193,13 @@
             display: flex;
             align-items: center;
             gap: 3px;
-            margin-bottom: 6px;
+            margin-bottom: 8px;
             height: 22px;
         }
 
         .title-text {
             font-family: 'JetBrains Mono', monospace;
-            font-size: 14px;
+            font-size: 15px;
             color: var(--purple);
             font-weight: 500;
         }
@@ -220,7 +220,7 @@
             font-size: 14px;
             color: var(--muted);
             text-align: center;
-            margin-bottom: 16px;
+            margin-bottom: 18px;
             max-width: 320px;
             line-height: 1.5;
         }
@@ -233,10 +233,10 @@
             border-radius: 100px;
             background: rgba(34,197,94,0.07);
             border: 1px solid rgba(34,197,94,0.15);
-            font-size: 12px;
+            font-size: 13px;
             color: #4ade80;
             font-weight: 500;
-            margin-bottom: 28px;
+            margin-bottom: 30px;
             letter-spacing: 0.3px;
         }
 
@@ -244,12 +244,6 @@
             width: 7px; height: 7px;
             background: #22c55e;
             border-radius: 50%;
-            animation: dotPulse 2s ease-in-out infinite;
-        }
-
-        @keyframes dotPulse {
-            0%,100% { opacity: 1; transform: scale(1); }
-            50% { opacity: 0.4; transform: scale(0.7); }
         }
 
         .cta-group {
@@ -273,6 +267,24 @@
             transition: all 0.4s cubic-bezier(0.25,0.46,0.45,0.94);
             position: relative;
             overflow: hidden;
+            -webkit-tap-highlight-color: transparent;
+            outline: none;
+        }
+
+        .cta:focus {
+            outline: none;
+            border-color: var(--border);
+            box-shadow: none;
+            background: var(--card-bg);
+            transform: none;
+        }
+
+        .cta:focus:not(:focus-visible) {
+            outline: none;
+            border-color: var(--border);
+            box-shadow: none;
+            background: var(--card-bg);
+            transform: none;
         }
 
         .cta::before {
@@ -284,35 +296,49 @@
             transition: left 0.6s ease;
         }
 
-        .cta:hover::before { left: 100%; }
+        @media (hover: hover) and (pointer: fine) {
+            .cta:hover::before { left: 100%; }
 
-        .cta:hover {
-            transform: translateY(-4px);
-            border-color: transparent;
+            .cta:hover {
+                transform: translateY(-4px);
+                border-color: transparent;
+            }
+
+            .cta-ln:hover {
+                background: rgba(10,102,194,0.08);
+                box-shadow:
+                    0 12px 40px rgba(10,102,194,0.18),
+                    0 0 0 1px rgba(10,102,194,0.35),
+                    inset 0 1px 0 rgba(255,255,255,0.05);
+            }
+
+            .cta-gh:hover {
+                background: rgba(126,231,135,0.05);
+                box-shadow:
+                    0 12px 40px rgba(126,231,135,0.12),
+                    0 0 0 1px rgba(126,231,135,0.25),
+                    inset 0 1px 0 rgba(255,255,255,0.05);
+            }
+
+            .cta-cv:hover {
+                background: rgba(251,146,60,0.06);
+                box-shadow:
+                    0 12px 40px rgba(251,146,60,0.15),
+                    0 0 0 1px rgba(251,146,60,0.3),
+                    inset 0 1px 0 rgba(255,255,255,0.05);
+            }
+
+            .cta:hover .cta-icon { transform: scale(1.1) rotate(-3deg); }
+
+            .cta:hover .cta-arrow { transform: translateX(6px); }
+            .cta-ln:hover .cta-arrow { color: #3b82f6; }
+            .cta-gh:hover .cta-arrow { color: #7ee787; }
+            .cta-cv:hover .cta-arrow { color: #fb923c; }
         }
 
-        .cta-ln:hover {
-            background: rgba(10,102,194,0.08);
-            box-shadow:
-                0 12px 40px rgba(10,102,194,0.18),
-                0 0 0 1px rgba(10,102,194,0.35),
-                inset 0 1px 0 rgba(255,255,255,0.05);
-        }
-
-        .cta-gh:hover {
-            background: rgba(126,231,135,0.05);
-            box-shadow:
-                0 12px 40px rgba(126,231,135,0.12),
-                0 0 0 1px rgba(126,231,135,0.25),
-                inset 0 1px 0 rgba(255,255,255,0.05);
-        }
-
-        .cta-cv:hover {
-            background: rgba(251,146,60,0.06);
-            box-shadow:
-                0 12px 40px rgba(251,146,60,0.15),
-                0 0 0 1px rgba(251,146,60,0.3),
-                inset 0 1px 0 rgba(255,255,255,0.05);
+        .cta:active {
+            transform: scale(0.98);
+            transition: transform 0.1s ease;
         }
 
         .cta-icon {
@@ -325,8 +351,6 @@
             transition: transform 0.3s ease;
         }
 
-        .cta:hover .cta-icon { transform: scale(1.1) rotate(-3deg); }
-
         .cta-ln .cta-icon { background: rgba(10,102,194,0.12); }
         .cta-gh .cta-icon { background: rgba(255,255,255,0.06); }
         .cta-cv .cta-icon { background: rgba(251,146,60,0.1); }
@@ -338,7 +362,7 @@
         .cta-body { flex: 1; }
 
         .cta-label {
-            font-size: 15px;
+            font-size: 16px;
             font-weight: 600;
             margin-bottom: 3px;
         }
@@ -354,11 +378,6 @@
             color: var(--dim);
             transition: all 0.3s ease;
         }
-
-        .cta:hover .cta-arrow { transform: translateX(6px); }
-        .cta-ln:hover .cta-arrow { color: #3b82f6; }
-        .cta-gh:hover .cta-arrow { color: #7ee787; }
-        .cta-cv:hover .cta-arrow { color: #fb923c; }
 
         .rv {
             opacity: 0;
@@ -380,17 +399,22 @@
         }
 
         @media(max-width:480px){
-            .main{padding:16px 16px}
-            .name{font-size:30px;letter-spacing:-1.2px}
-            .title-text{font-size:13px}
-            .tagline{font-size:13px}
-            .cta{padding:15px 18px;border-radius:14px}
-            .cta-icon{width:40px;height:40px;border-radius:10px}
+            .main{padding:16px 16px 14vh 16px}
+            .name{font-size:32px;letter-spacing:-1.2px}
+            .title-text{font-size:14px}
+            .tagline{font-size:14px}
+            .cta{padding:16px 18px;border-radius:14px}
+            .cta-icon{width:42px;height:42px;border-radius:10px}
             .cta-icon svg{width:20px;height:20px}
+            .cta-label{font-size:15px}
         }
 
         @media(min-width:768px){
-            .name{font-size:46px}
+            .name{font-size:48px}
+            .title-text{font-size:16px}
+            .tagline{font-size:15px}
+            .cta-label{font-size:17px}
+            .cta-sub{font-size:13px}
         }
     </style>
 </head>
@@ -485,6 +509,14 @@
             }
         }
         setTimeout(type, 1200);
+
+        document.addEventListener('touchstart', function(e) {
+            if (!e.target.closest('.cta')) {
+                document.querySelectorAll('.cta').forEach(function(btn) {
+                    btn.blur();
+                });
+            }
+        });
     </script>
 
 </body>

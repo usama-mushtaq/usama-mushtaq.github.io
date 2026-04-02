@@ -2,10 +2,11 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="theme-color" content="#08090a">
-    <meta name="description" content="Usama Mushtaq — Application Developer">
+    <meta name="description" content="Usama Mushtaq — Application Developer specializing in Kotlin, Java & Android Development">
     <meta property="og:title" content="Usama Mushtaq | Application Developer">
+    <meta property="og:description" content="Application Developer | Kotlin • Java • C++ • Android">
     <title>Usama Mushtaq | Application Developer</title>
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚡</text></svg>">
     <style>
@@ -25,15 +26,12 @@
 
         * { margin:0; padding:0; box-sizing:border-box; }
 
-        html, body {
-            height: 100%;
-            overflow: hidden;
-        }
-
         body {
             background: var(--bg);
             color: var(--text);
             font-family: 'Inter', -apple-system, sans-serif;
+            min-height: 100vh;
+            overflow-x: hidden;
             -webkit-font-smoothing: antialiased;
         }
 
@@ -100,19 +98,18 @@
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            height: 100vh;
-            height: 100dvh;
-            padding: 0 20px;
+            min-height: 100vh;
+            padding: 50px 20px;
         }
 
         .avatar-wrap {
             position: relative;
-            margin-bottom: 3.5vh;
+            margin-bottom: 32px;
         }
 
         .avatar-ring {
             position: absolute;
-            inset: -4px;
+            inset: -5px;
             border-radius: 50%;
             background: conic-gradient(from 0deg, var(--purple), var(--pink), var(--cyan), var(--purple));
             animation: spin 4s linear infinite;
@@ -133,7 +130,7 @@
 
         .avatar {
             position: relative;
-            width: 80px; height: 80px;
+            width: 96px; height: 96px;
             border-radius: 50%;
             background: var(--bg);
             display: flex;
@@ -144,7 +141,7 @@
         }
 
         .avatar-text {
-            font-size: 26px;
+            font-size: 30px;
             font-weight: 800;
             background: linear-gradient(135deg, var(--purple), var(--pink));
             -webkit-background-clip: text;
@@ -154,8 +151,8 @@
 
         .status-dot {
             position: absolute;
-            bottom: 4px; right: 4px;
-            width: 14px; height: 14px;
+            bottom: 6px; right: 6px;
+            width: 16px; height: 16px;
             background: #22c55e;
             border-radius: 50%;
             border: 3px solid var(--bg);
@@ -176,11 +173,11 @@
         }
 
         .name {
-            font-size: clamp(28px, 5.5vw, 42px);
+            font-size: 38px;
             font-weight: 800;
             letter-spacing: -2px;
             text-align: center;
-            margin-bottom: 1vh;
+            margin-bottom: 12px;
             background: linear-gradient(135deg, #ffffff 0%, #a1a1aa 40%, #ffffff 80%);
             background-size: 200% 200%;
             -webkit-background-clip: text;
@@ -197,20 +194,20 @@
             display: flex;
             align-items: center;
             gap: 3px;
-            margin-bottom: 1vh;
-            height: 20px;
+            margin-bottom: 8px;
+            height: 22px;
         }
 
         .title-text {
             font-family: 'JetBrains Mono', monospace;
-            font-size: clamp(12px, 2vw, 14px);
+            font-size: 14px;
             color: var(--purple);
             font-weight: 500;
         }
 
         .type-cursor {
             display: inline-block;
-            width: 2px; height: 16px;
+            width: 2px; height: 18px;
             background: var(--purple);
             animation: blink 1s step-end infinite;
         }
@@ -221,10 +218,10 @@
         }
 
         .tagline {
-            font-size: clamp(12px, 1.8vw, 14px);
+            font-size: 14px;
             color: var(--muted);
             text-align: center;
-            margin-bottom: 2.5vh;
+            margin-bottom: 24px;
             max-width: 320px;
             line-height: 1.5;
         }
@@ -233,19 +230,19 @@
             display: inline-flex;
             align-items: center;
             gap: 8px;
-            padding: 6px 16px;
+            padding: 7px 18px;
             border-radius: 100px;
             background: rgba(34,197,94,0.07);
             border: 1px solid rgba(34,197,94,0.15);
-            font-size: 11px;
+            font-size: 12px;
             color: #4ade80;
             font-weight: 500;
-            margin-bottom: 4vh;
+            margin-bottom: 42px;
             letter-spacing: 0.3px;
         }
 
         .badge-dot {
-            width: 6px; height: 6px;
+            width: 7px; height: 7px;
             background: #22c55e;
             border-radius: 50%;
             animation: dotPulse 2s ease-in-out infinite;
@@ -258,18 +255,18 @@
 
         .cta-group {
             width: 100%;
-            max-width: 400px;
+            max-width: 420px;
             display: flex;
             flex-direction: column;
-            gap: 1.4vh;
+            gap: 12px;
         }
 
         .cta {
             display: flex;
             align-items: center;
-            gap: 14px;
-            padding: 14px 18px;
-            border-radius: 14px;
+            gap: 16px;
+            padding: 18px 22px;
+            border-radius: 16px;
             text-decoration: none;
             color: var(--text);
             background: var(--card-bg);
@@ -291,7 +288,7 @@
         .cta:hover::before { left: 100%; }
 
         .cta:hover {
-            transform: translateY(-3px);
+            transform: translateY(-4px);
             border-color: transparent;
         }
 
@@ -320,8 +317,8 @@
         }
 
         .cta-icon {
-            width: 42px; height: 42px;
-            border-radius: 11px;
+            width: 46px; height: 46px;
+            border-radius: 12px;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -336,25 +333,25 @@
         .cta-cv .cta-icon { background: rgba(251,146,60,0.1); }
 
         .cta-icon svg {
-            width: 20px; height: 20px;
+            width: 22px; height: 22px;
         }
 
         .cta-body { flex: 1; }
 
         .cta-label {
-            font-size: 14px;
+            font-size: 15px;
             font-weight: 600;
-            margin-bottom: 2px;
+            margin-bottom: 3px;
         }
 
         .cta-sub {
-            font-size: 11px;
+            font-size: 12px;
             color: var(--muted);
             font-weight: 400;
         }
 
         .cta-arrow {
-            font-size: 16px;
+            font-size: 18px;
             color: var(--dim);
             transition: all 0.3s ease;
         }
@@ -383,57 +380,18 @@
             to { opacity:1; transform:translateY(0); }
         }
 
-        /* Small phones */
-        @media(max-height:680px){
-            .avatar{width:64px;height:64px}
-            .avatar-text{font-size:22px}
-            .avatar-wrap{margin-bottom:2.5vh}
-            .name{font-size:26px;margin-bottom:0.5vh}
-            .tagline{margin-bottom:1.5vh;font-size:12px}
-            .badge{margin-bottom:2.5vh;padding:5px 14px;font-size:10px}
-            .cta{padding:12px 16px}
-            .cta-icon{width:36px;height:36px;border-radius:9px}
-            .cta-icon svg{width:18px;height:18px}
-            .cta-label{font-size:13px}
-            .cta-sub{font-size:10px}
-            .cta-group{gap:1vh}
-            .status-dot{width:12px;height:12px}
+        @media(max-width:480px){
+            .main{padding:40px 16px}
+            .name{font-size:30px;letter-spacing:-1.2px}
+            .title-text{font-size:13px}
+            .tagline{font-size:13px}
+            .cta{padding:15px 18px;border-radius:14px}
+            .cta-icon{width:40px;height:40px;border-radius:10px}
+            .cta-icon svg{width:20px;height:20px}
         }
 
-        /* Very small phones */
-        @media(max-height:580px){
-            .avatar{width:56px;height:56px}
-            .avatar-text{font-size:20px}
-            .avatar-wrap{margin-bottom:2vh}
-            .name{font-size:24px}
-            .title-text{font-size:11px}
-            .tagline{font-size:11px;margin-bottom:1vh}
-            .badge{margin-bottom:2vh;font-size:10px}
-            .cta{padding:10px 14px;border-radius:12px}
-            .cta-icon{width:32px;height:32px;border-radius:8px}
-            .cta-icon svg{width:16px;height:16px}
-            .cta-label{font-size:12px}
-            .cta-sub{font-size:9px}
-            .cta-group{gap:0.8vh}
-        }
-
-        /* Tall phones */
-        @media(min-height:800px){
-            .avatar{width:90px;height:90px}
-            .avatar-text{font-size:28px}
-            .avatar-wrap{margin-bottom:4vh}
-            .badge{margin-bottom:5vh}
-            .cta-group{gap:1.8vh}
-            .cta{padding:16px 20px}
-        }
-
-        /* Tablets & Desktop */
-        @media(min-height:900px) and (min-width:768px){
-            .avatar{width:96px;height:96px}
-            .avatar-text{font-size:30px}
+        @media(min-width:768px){
             .name{font-size:46px}
-            .cta{padding:18px 22px}
-            .cta-icon{width:46px;height:46px}
         }
     </style>
 </head>

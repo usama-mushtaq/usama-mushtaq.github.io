@@ -126,7 +126,6 @@
             min-width: 120px; min-height: 120px;
             background: rgba(236,72,153,0.15);
             top: 50%; left: 50%;
-            transform: translate(-50%, -50%);
             animation-delay: -16s;
         }
 
@@ -162,7 +161,9 @@
             background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
         }
 
-        /* ─── PAGE: Main Landing ─── */
+        /* ══════════════════════════════════
+           PAGE 1 — Main Landing
+        ══════════════════════════════════ */
         #page-main {
             display: flex;
             flex-direction: column;
@@ -176,15 +177,26 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            justify-content: center;
-            padding: clamp(24px, 5vw, 60px) clamp(16px, 4vw, 40px);
-            gap: 0;
+            /* Mobile: slightly shifted upward */
+            justify-content: flex-start;
+            padding-top: clamp(10vh, 12vh, 14vh);
+            padding-bottom: clamp(16px, 4vh, 32px);
+            padding-left:  clamp(16px, 4vw, 40px);
+            padding-right: clamp(16px, 4vw, 40px);
+        }
+
+        /* Desktop: centered vertically like before */
+        @media (min-width: 700px) {
+            .main {
+                justify-content: center;
+                padding-top: clamp(24px, 5vw, 60px);
+            }
         }
 
         /* ─── Avatar ─── */
         .avatar-wrap {
             position: relative;
-            margin-bottom: clamp(16px, 3vh, 28px);
+            margin-bottom: clamp(18px, 3.5vh, 32px);
             flex-shrink: 0;
         }
 
@@ -211,8 +223,8 @@
 
         .avatar {
             position: relative;
-            width: clamp(72px, 12vw, 100px);
-            height: clamp(72px, 12vw, 100px);
+            width: clamp(82px, 14vw, 108px);
+            height: clamp(82px, 14vw, 108px);
             border-radius: 50%;
             background: var(--bg);
             display: flex;
@@ -223,7 +235,7 @@
         }
 
         .avatar-text {
-            font-size: clamp(20px, 4vw, 32px);
+            font-size: clamp(24px, 5vw, 36px);
             font-weight: 800;
             background: linear-gradient(135deg, var(--purple), var(--pink));
             -webkit-background-clip: text;
@@ -234,8 +246,8 @@
         .status-dot {
             position: absolute;
             bottom: 4px; right: 4px;
-            width: clamp(12px, 2vw, 17px);
-            height: clamp(12px, 2vw, 17px);
+            width: clamp(13px, 2.2vw, 18px);
+            height: clamp(13px, 2.2vw, 18px);
             background: #22c55e;
             border-radius: 50%;
             border: 3px solid var(--bg);
@@ -257,11 +269,11 @@
 
         /* ─── Name ─── */
         .name {
-            font-size: clamp(26px, 5.5vw, 52px);
+            font-size: clamp(30px, 6.5vw, 56px);
             font-weight: 800;
-            letter-spacing: clamp(-1px, -0.04em, -2px);
+            letter-spacing: clamp(-1.2px, -0.04em, -2px);
             text-align: center;
-            margin-bottom: clamp(8px, 1.5vh, 14px);
+            margin-bottom: clamp(10px, 1.8vh, 16px);
             background: linear-gradient(135deg, #ffffff 0%, #a1a1aa 40%, #ffffff 80%);
             background-size: 200% 200%;
             -webkit-background-clip: text;
@@ -280,13 +292,13 @@
             display: flex;
             align-items: center;
             gap: 3px;
-            margin-bottom: clamp(6px, 1.2vh, 10px);
-            height: clamp(18px, 3vh, 26px);
+            margin-bottom: clamp(8px, 1.5vh, 13px);
+            height: clamp(20px, 3.5vh, 30px);
         }
 
         .title-text {
             font-family: 'JetBrains Mono', monospace;
-            font-size: clamp(12px, 2.2vw, 17px);
+            font-size: clamp(13px, 2.6vw, 19px);
             color: var(--purple);
             font-weight: 500;
         }
@@ -294,7 +306,7 @@
         .type-cursor {
             display: inline-block;
             width: 2px;
-            height: clamp(14px, 2.2vh, 20px);
+            height: clamp(16px, 2.6vh, 22px);
             background: var(--purple);
             animation: blink 1s step-end infinite;
         }
@@ -306,32 +318,32 @@
 
         /* ─── Tagline ─── */
         .tagline {
-            font-size: clamp(12px, 1.8vw, 15px);
+            font-size: clamp(13px, 2vw, 16px);
             color: var(--muted);
             text-align: center;
-            margin-bottom: clamp(12px, 2.5vh, 22px);
-            max-width: min(360px, 88vw);
-            line-height: 1.6;
+            margin-bottom: clamp(14px, 2.8vh, 24px);
+            max-width: min(380px, 88vw);
+            line-height: 1.65;
         }
 
         /* ─── Status Badge ─── */
         .badge {
             display: inline-flex;
             align-items: center;
-            gap: 8px;
-            padding: clamp(5px, 1vh, 8px) clamp(14px, 3vw, 20px);
+            gap: 9px;
+            padding: clamp(6px, 1.2vh, 10px) clamp(16px, 3.5vw, 22px);
             border-radius: 100px;
             background: rgba(34,197,94,0.07);
             border: 1px solid rgba(34,197,94,0.15);
-            font-size: clamp(11px, 1.6vw, 14px);
+            font-size: clamp(12px, 1.8vw, 15px);
             color: #4ade80;
             font-weight: 500;
-            margin-bottom: clamp(20px, 4vh, 36px);
+            margin-bottom: clamp(24px, 4.5vh, 40px);
             letter-spacing: 0.3px;
         }
 
         .badge-dot {
-            width: 7px; height: 7px;
+            width: 8px; height: 8px;
             background: #22c55e;
             border-radius: 50%;
             flex-shrink: 0;
@@ -340,13 +352,13 @@
         /* ─── CTA Group ─── */
         .cta-group {
             width: 100%;
-            max-width: min(900px, 92vw);
+            max-width: min(920px, 94vw);
             display: flex;
             flex-direction: column;
             gap: clamp(10px, 1.8vh, 14px);
         }
 
-        /* On wide screens → horizontal row */
+        /* Wide screens → horizontal */
         @media (min-width: 700px) {
             .cta-group {
                 flex-direction: row;
@@ -357,8 +369,8 @@
                 flex-direction: column;
                 align-items: center;
                 text-align: center;
-                padding: clamp(20px, 3vh, 32px) clamp(16px, 2vw, 28px);
-                gap: clamp(12px, 2vh, 18px);
+                padding: clamp(22px, 3.5vh, 36px) clamp(18px, 2.5vw, 30px);
+                gap: clamp(14px, 2.2vh, 20px);
                 justify-content: center;
             }
             .cta-body {
@@ -368,19 +380,19 @@
                 display: none;
             }
             .cta-icon {
-                width: clamp(52px, 7vw, 68px);
-                height: clamp(52px, 7vw, 68px);
-                border-radius: 16px;
+                width: clamp(56px, 7.5vw, 72px);
+                height: clamp(56px, 7.5vw, 72px);
+                border-radius: 18px;
             }
             .cta-icon svg {
-                width: clamp(24px, 3.5vw, 30px);
-                height: clamp(24px, 3.5vw, 30px);
+                width: clamp(26px, 3.8vw, 32px);
+                height: clamp(26px, 3.8vw, 32px);
             }
             .cta-label {
-                font-size: clamp(15px, 1.8vw, 18px);
+                font-size: clamp(16px, 2vw, 19px);
             }
             .cta-sub {
-                font-size: clamp(11px, 1.2vw, 14px);
+                font-size: clamp(12px, 1.3vw, 14px);
             }
         }
 
@@ -388,8 +400,8 @@
         .cta {
             display: flex;
             align-items: center;
-            gap: clamp(12px, 2.5vw, 18px);
-            padding: clamp(14px, 2.5vh, 20px) clamp(16px, 3vw, 24px);
+            gap: clamp(14px, 3vw, 20px);
+            padding: clamp(16px, 2.8vh, 22px) clamp(18px, 3.5vw, 26px);
             border-radius: 16px;
             text-decoration: none;
             color: var(--text);
@@ -461,9 +473,9 @@
         }
 
         .cta-icon {
-            width: clamp(40px, 8vw, 48px);
-            height: clamp(40px, 8vw, 48px);
-            border-radius: 12px;
+            width: clamp(44px, 9vw, 52px);
+            height: clamp(44px, 9vw, 52px);
+            border-radius: 13px;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -476,26 +488,26 @@
         .cta-cv .cta-icon { background: rgba(251,146,60,0.1); }
 
         .cta-icon svg {
-            width: clamp(18px, 3.5vw, 23px);
-            height: clamp(18px, 3.5vw, 23px);
+            width: clamp(20px, 4vw, 25px);
+            height: clamp(20px, 4vw, 25px);
         }
 
         .cta-body { flex: 1; }
 
         .cta-label {
-            font-size: clamp(14px, 2.5vw, 17px);
+            font-size: clamp(15px, 2.8vw, 18px);
             font-weight: 600;
-            margin-bottom: 3px;
+            margin-bottom: 4px;
         }
 
         .cta-sub {
-            font-size: clamp(11px, 1.5vw, 13px);
+            font-size: clamp(12px, 1.6vw, 14px);
             color: var(--muted);
             font-weight: 400;
         }
 
         .cta-arrow {
-            font-size: 18px;
+            font-size: 20px;
             color: var(--dim);
             transition: all 0.3s ease;
             flex-shrink: 0;
@@ -520,7 +532,19 @@
             to { opacity: 1; transform: translateY(0); }
         }
 
-        /* ─── PAGE: Resume Viewer (mobile fallback) ─── */
+        /* ─── Landscape small height ─── */
+        @media (max-height: 560px) and (orientation: landscape) {
+            .main {
+                padding-top: clamp(8px, 2vh, 16px);
+                justify-content: flex-start;
+            }
+            .avatar-wrap { margin-bottom: 8px; }
+            .badge { margin-bottom: 12px; }
+        }
+
+        /* ══════════════════════════════════
+           PAGE 2 — Resume Viewer
+        ══════════════════════════════════ */
         #page-resume {
             display: none;
             flex-direction: column;
@@ -543,20 +567,13 @@
             backdrop-filter: blur(16px);
             -webkit-backdrop-filter: blur(16px);
             border-bottom: 1px solid var(--border);
-            flex-wrap: wrap;
-        }
-
-        .resume-topbar-left {
-            display: flex;
-            align-items: center;
-            gap: 10px;
         }
 
         .btn-back {
             display: inline-flex;
             align-items: center;
             gap: 8px;
-            padding: 9px 16px;
+            padding: 9px 18px;
             border-radius: 10px;
             background: rgba(255,255,255,0.05);
             border: 1px solid var(--border);
@@ -604,19 +621,10 @@
             box-shadow: 0 8px 24px rgba(251,146,60,0.2);
         }
 
-        .btn-download:active {
-            transform: scale(0.97);
-        }
+        .btn-download:active { transform: scale(0.97); }
 
         .btn-download svg {
             width: 16px; height: 16px;
-        }
-
-        .resume-topbar-title {
-            font-size: clamp(13px, 2vw, 16px);
-            font-weight: 600;
-            color: var(--text);
-            opacity: 0.7;
         }
 
         .resume-body {
@@ -625,19 +633,6 @@
             flex-direction: column;
             align-items: center;
             padding: clamp(16px, 3vw, 32px) clamp(12px, 3vw, 24px) clamp(24px, 4vw, 40px);
-            gap: 16px;
-        }
-
-        .resume-note {
-            font-size: 13px;
-            color: var(--muted);
-            text-align: center;
-            padding: 10px 20px;
-            background: rgba(255,255,255,0.03);
-            border: 1px solid var(--border);
-            border-radius: 10px;
-            max-width: 520px;
-            width: 100%;
         }
 
         .resume-img-wrap {
@@ -654,22 +649,11 @@
             height: auto;
             display: block;
         }
-
-        /* ─── Very small screens extra safety ─── */
-        @media (max-height: 600px) and (orientation: landscape) {
-            .main {
-                padding: 12px clamp(16px, 4vw, 40px);
-                justify-content: flex-start;
-                padding-top: clamp(12px, 3vh, 20px);
-            }
-            .avatar-wrap { margin-bottom: 10px; }
-            .badge { margin-bottom: 14px; }
-        }
     </style>
 </head>
 <body>
 
-    <!-- Background Effects (shared) -->
+    <!-- Shared Background -->
     <div class="bg-effects">
         <div class="orb orb-1"></div>
         <div class="orb orb-2"></div>
@@ -678,11 +662,10 @@
     <div class="grid-overlay"></div>
     <div class="noise"></div>
 
-    <!-- ══════════════════════════════════════
+    <!-- ══════════════════════════════════
          PAGE 1 — Main Landing
-    ══════════════════════════════════════ -->
+    ══════════════════════════════════ -->
     <div id="page-main" style="display:flex;">
-
         <main class="main">
 
             <div class="avatar-wrap rv d1">
@@ -739,7 +722,6 @@
                     <span class="cta-arrow">→</span>
                 </a>
 
-                <!-- Resume card — behaviour decided by JS -->
                 <div class="cta cta-cv rv d8" id="resume-card" role="button" tabindex="0">
                     <div class="cta-icon">
                         <svg viewBox="0 0 24 24" fill="#fb923c">
@@ -757,23 +739,24 @@
         </main>
     </div>
 
-    <!-- ══════════════════════════════════════
-         PAGE 2 — Resume Viewer (mobile fallback)
-    ══════════════════════════════════════ -->
+    <!-- ══════════════════════════════════
+         PAGE 2 — Resume Viewer (mobile)
+    ══════════════════════════════════ -->
     <div id="page-resume">
 
         <div class="resume-topbar">
-            <div class="resume-topbar-left">
-                <button class="btn-back" id="btn-back" aria-label="Go back">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
-                        <polyline points="15 18 9 12 15 6"/>
-                    </svg>
-                    Back
-                </button>
-                <span class="resume-topbar-title">Usama Mushtaq — Resume</span>
-            </div>
-            <a href="./my_resume.pdf" download="Usama_Mushtaq_Resume.pdf" class="btn-download" id="btn-download">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+            <button class="btn-back" id="btn-back" aria-label="Go back">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"
+                     stroke-linecap="round" stroke-linejoin="round">
+                    <polyline points="15 18 9 12 15 6"/>
+                </svg>
+                Back
+            </button>
+
+            <a href="./my_resume.pdf" download="Usama_Mushtaq_Resume.pdf"
+               class="btn-download" id="btn-download">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"
+                     stroke-linecap="round" stroke-linejoin="round">
                     <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
                     <polyline points="7 10 12 15 17 10"/>
                     <line x1="12" y1="15" x2="12" y2="3"/>
@@ -783,13 +766,10 @@
         </div>
 
         <div class="resume-body">
-            <div class="resume-note">
-                📄 Tap <strong>Download PDF</strong> above to save the full resume to your device.
-            </div>
             <div class="resume-img-wrap">
                 <!--
-                    Replace './resume_preview.png' with the actual path of your
-                    resume preview image inside the repository.
+                    اپنی repository میں index.html کے ساتھ
+                    resume_preview.png رکھیں (resume کا screenshot/export)
                 -->
                 <img src="./resume_preview.png"
                      alt="Usama Mushtaq — Resume Preview"
@@ -801,7 +781,7 @@
 
     <script>
         /* ── Typewriter ── */
-        const typeEl = document.getElementById('typewriter');
+        const typeEl   = document.getElementById('typewriter');
         const typeText = "Application Developer";
         let ti = 0;
         function type() {
@@ -819,40 +799,62 @@
             }
         });
 
-        /* ── Resume: detect inline PDF support ── */
+        /* ── Pages ── */
+        const pageMain   = document.getElementById('page-main');
+        const pageResume = document.getElementById('page-resume');
+        const btnBack    = document.getElementById('btn-back');
+        const resumeCard = document.getElementById('resume-card');
+        const resumeSub  = document.getElementById('resume-sub');
+        const pdfPath    = './my_resume.pdf';
+
+        /* ── PDF inline detection ── */
         function canViewPdfInline() {
-            // Desktop browsers (non-touch, wide screen) almost always support inline PDF
-            // We use a combination of: touch support + screen width + navigator plugins
             const isDesktop = window.matchMedia('(min-width: 900px) and (pointer: fine)').matches;
             if (isDesktop) return true;
-
-            // Check navigator for PDF plugin (works in most desktop browsers)
             const plugins = Array.from(navigator.plugins || []);
             const hasPdfPlugin = plugins.some(p =>
                 /pdf/i.test(p.name) || /chrome pdf/i.test(p.name) || /acrobat/i.test(p.name)
             );
             if (hasPdfPlugin) return true;
-
-            // iOS / Android typically cannot inline-view PDF in a new tab without native viewer
             const isMobile = /Android|iPhone|iPad|iPod|Mobile/i.test(navigator.userAgent);
             if (isMobile) return false;
-
             return false;
         }
 
-        const resumeCard   = document.getElementById('resume-card');
-        const resumeSub    = document.getElementById('resume-sub');
-        const pageMain     = document.getElementById('page-main');
-        const pageResume   = document.getElementById('page-resume');
-        const btnBack      = document.getElementById('btn-back');
-        const pdfPath      = './my_resume.pdf';
+        /* ── Page switching with history ── */
+        function showResumePage() {
+            pageMain.style.display   = 'none';
+            pageResume.style.display = 'flex';
+            window.scrollTo(0, 0);
+            // Push a new history state so browser back = go to main
+            history.pushState({ page: 'resume' }, '', '#resume');
+        }
 
+        function showMainPage() {
+            pageResume.style.display = 'none';
+            pageMain.style.display   = 'flex';
+            window.scrollTo(0, 0);
+        }
+
+        // Browser back / forward button handler
+        window.addEventListener('popstate', function(e) {
+            // If hash is gone (back pressed from #resume) → show main
+            if (!location.hash || location.hash !== '#resume') {
+                if (pageResume.style.display === 'flex') {
+                    showMainPage();
+                }
+            }
+        });
+
+        // If page loads directly at #resume hash, ignore it and stay on main
+        if (location.hash === '#resume') {
+            history.replaceState({}, '', location.pathname);
+        }
+
+        /* ── Resume card behavior ── */
         if (canViewPdfInline()) {
-            // Desktop → open PDF directly in new tab
             resumeSub.textContent = 'View inline or download';
-            resumeCard.addEventListener('click', () => {
-                window.open(pdfPath, '_blank', 'noopener');
-            });
+            resumeCard.addEventListener('click', () => window.open(pdfPath, '_blank', 'noopener'));
             resumeCard.addEventListener('keydown', e => {
                 if (e.key === 'Enter' || e.key === ' ') {
                     e.preventDefault();
@@ -860,7 +862,6 @@
                 }
             });
         } else {
-            // Mobile → show internal resume page with image preview
             resumeSub.textContent = 'Preview & download CV';
             resumeCard.addEventListener('click', showResumePage);
             resumeCard.addEventListener('keydown', e => {
@@ -871,23 +872,9 @@
             });
         }
 
-        function showResumePage() {
-            pageMain.style.display   = 'none';
-            pageResume.style.display = 'flex';
-            window.scrollTo(0, 0);
-        }
-
-        function showMainPage() {
-            pageResume.style.display = 'none';
-            pageMain.style.display   = 'flex';
-            window.scrollTo(0, 0);
-        }
-
-        btnBack.addEventListener('click', showMainPage);
-
-        // Handle browser back button
-        window.addEventListener('popstate', () => {
-            if (pageResume.style.display === 'flex') showMainPage();
+        btnBack.addEventListener('click', function() {
+            // Manually go back in history which triggers popstate
+            history.back();
         });
     </script>
 

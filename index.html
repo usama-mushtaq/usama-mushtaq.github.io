@@ -74,24 +74,18 @@
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
 
-        html, body {
-            width: 100%;
+        html {
             height: 100%;
-            /* Mobile: no scroll on main page */
-            overflow: hidden;
         }
 
         body {
+            min-height: 100%;
             background: var(--bg);
             color: var(--text);
             font-family: 'Inter', -apple-system, sans-serif;
             -webkit-font-smoothing: antialiased;
             overflow-x: hidden;
-        }
-
-        /* Resume page needs scroll */
-        body.resume-open {
-            overflow: auto;
+            /* Pull-to-refresh allowed — NO overflow:hidden */
         }
 
         /* ─── Background Effects ─── */
@@ -170,10 +164,11 @@
            PAGE 1 — Main Landing
         ══════════════════════════════════ */
         #page-main {
-            position: fixed;
-            inset: 0;
             display: flex;
             flex-direction: column;
+            min-height: 100vh;
+            min-height: 100dvh;
+            position: relative;
             z-index: 1;
         }
 
@@ -182,18 +177,18 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            justify-content: center;
-            padding: clamp(12px, 3vh, 32px) clamp(16px, 4vw, 40px) clamp(12px, 3vh, 32px);
-            gap: 0;
-            /* Slight upward shift on mobile via padding asymmetry */
-            padding-top: clamp(8px, 2vh, 20px);
-            padding-bottom: clamp(16px, 4vh, 40px);
-            overflow: hidden;
+            /* Mobile: top-biased, content pushed upward */
+            justify-content: flex-start;
+            padding-top: clamp(5vh, 7vh, 9vh);
+            padding-bottom: clamp(20px, 4vh, 40px);
+            padding-left: clamp(14px, 4vw, 40px);
+            padding-right: clamp(14px, 4vw, 40px);
         }
 
         /* Desktop: perfectly centered */
         @media (min-width: 700px) {
             .main {
+                justify-content: center;
                 padding-top: clamp(24px, 5vw, 60px);
                 padding-bottom: clamp(24px, 5vw, 60px);
             }
@@ -202,8 +197,7 @@
         /* ─── Avatar ─── */
         .avatar-wrap {
             position: relative;
-            /* Responsive margin: scales with available height */
-            margin-bottom: clamp(10px, 2.2vh, 26px);
+            margin-bottom: clamp(12px, 2.4vh, 28px);
             flex-shrink: 0;
         }
 
@@ -230,39 +224,31 @@
 
         .avatar {
             position: relative;
-            /* Scales with viewport: smaller on short screens */
-            width: clamp(76px, 13vw, 104px);
-            height: clamp(76px, 13vw, 104px);
+            width: clamp(80px, 13vw, 106px);
+            height: clamp(80px, 13vw, 106px);
             border-radius: 50%;
             background: var(--bg);
-            /* EXACT centering of UM text */
             display: flex;
             align-items: center;
             justify-content: center;
             z-index: 1;
             border: 4px solid var(--bg);
-            /* Prevent any sub-pixel rendering shifts */
-            text-align: center;
         }
 
+        /* UM — mathematically perfect center */
         .avatar-text {
-            /* Use fixed line-height & remove letter-spacing offset */
-            font-size: clamp(22px, 4.5vw, 34px);
-            font-weight: 800;
-            background: linear-gradient(135deg, var(--purple), var(--pink));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            /* Precise centering: no letter-spacing shifting */
-            letter-spacing: 0px;
-            line-height: 1;
-            /* Force render at exact center */
+            position: absolute;
+            inset: 0;
             display: flex;
             align-items: center;
             justify-content: center;
-            width: 100%;
-            height: 100%;
-            position: absolute;
-            top: 0; left: 0;
+            font-size: clamp(22px, 4.5vw, 34px);
+            font-weight: 800;
+            line-height: 1;
+            letter-spacing: 0;
+            background: linear-gradient(135deg, var(--purple), var(--pink));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
 
         .status-dot {
@@ -291,7 +277,6 @@
 
         /* ─── Name ─── */
         .name {
-            /* Bigger on mobile too */
             font-size: clamp(32px, 7.5vw, 56px);
             font-weight: 800;
             letter-spacing: -1.5px;
@@ -346,7 +331,7 @@
             font-size: clamp(13.5px, 2.2vw, 16px);
             color: var(--muted);
             text-align: center;
-            margin-bottom: clamp(10px, 2vh, 22px);
+            margin-bottom: clamp(10px, 1.8vh, 20px);
             max-width: min(380px, 88vw);
             line-height: 1.6;
             flex-shrink: 0;
@@ -357,14 +342,14 @@
             display: inline-flex;
             align-items: center;
             gap: 9px;
-            padding: clamp(6px, 1.1vh, 9px) clamp(16px, 3.5vw, 22px);
+            padding: clamp(7px, 1.2vh, 10px) clamp(18px, 3.5vw, 24px);
             border-radius: 100px;
             background: rgba(34,197,94,0.07);
             border: 1px solid rgba(34,197,94,0.15);
-            font-size: clamp(12.5px, 2vw, 15px);
+            font-size: clamp(13px, 2vw, 15px);
             color: #4ade80;
             font-weight: 500;
-            margin-bottom: clamp(16px, 3vh, 36px);
+            margin-bottom: clamp(18px, 3.5vh, 38px);
             letter-spacing: 0.3px;
             flex-shrink: 0;
         }
@@ -376,53 +361,24 @@
             flex-shrink: 0;
         }
 
-        /* ─── CTA Group ─── */
+        /* ─── CTA Group — Mobile vertical ─── */
         .cta-group {
             width: 100%;
             max-width: min(920px, 94vw);
             display: flex;
             flex-direction: column;
-            gap: clamp(8px, 1.5vh, 13px);
+            gap: clamp(10px, 1.8vh, 15px);
             flex-shrink: 0;
         }
 
-        /* Wide screens → horizontal */
-        @media (min-width: 700px) {
-            .cta-group {
-                flex-direction: row;
-                align-items: stretch;
-            }
-            .cta {
-                flex: 1;
-                flex-direction: column;
-                align-items: center;
-                text-align: center;
-                padding: clamp(22px, 3.5vh, 36px) clamp(18px, 2.5vw, 30px);
-                gap: clamp(14px, 2.2vh, 20px);
-                justify-content: center;
-            }
-            .cta-body { flex: unset; }
-            .cta-arrow { display: none; }
-            .cta-icon {
-                width: clamp(56px, 7.5vw, 72px);
-                height: clamp(56px, 7.5vw, 72px);
-                border-radius: 18px;
-            }
-            .cta-icon svg {
-                width: clamp(26px, 3.8vw, 32px);
-                height: clamp(26px, 3.8vw, 32px);
-            }
-            .cta-label { font-size: clamp(16px, 2vw, 19px); }
-            .cta-sub   { font-size: clamp(12px, 1.3vw, 14px); }
-        }
-
-        /* ─── CTA Card ─── */
+        /* ─── CTA Card — Mobile ─── */
         .cta {
             display: flex;
             align-items: center;
-            gap: clamp(12px, 2.5vw, 18px);
-            padding: clamp(13px, 2.2vh, 20px) clamp(16px, 3.5vw, 24px);
-            border-radius: 16px;
+            gap: clamp(14px, 3vw, 20px);
+            /* Bigger padding so cards fill bottom space */
+            padding: clamp(17px, 3vh, 26px) clamp(18px, 4vw, 28px);
+            border-radius: 18px;
             text-decoration: none;
             color: var(--text);
             background: var(--card-bg);
@@ -453,37 +409,11 @@
             transition: left 0.6s ease;
         }
 
-        @media (hover: hover) and (pointer: fine) {
-            .cta:hover::before { left: 100%; }
-            .cta:hover { transform: translateY(-5px); border-color: transparent; }
-            .cta-ln:hover {
-                background: rgba(10,102,194,0.09);
-                box-shadow: 0 14px 44px rgba(10,102,194,0.2), 0 0 0 1px rgba(10,102,194,0.38), inset 0 1px 0 rgba(255,255,255,0.05);
-            }
-            .cta-gh:hover {
-                background: rgba(126,231,135,0.06);
-                box-shadow: 0 14px 44px rgba(126,231,135,0.14), 0 0 0 1px rgba(126,231,135,0.28), inset 0 1px 0 rgba(255,255,255,0.05);
-            }
-            .cta-cv:hover {
-                background: rgba(251,146,60,0.07);
-                box-shadow: 0 14px 44px rgba(251,146,60,0.17), 0 0 0 1px rgba(251,146,60,0.32), inset 0 1px 0 rgba(255,255,255,0.05);
-            }
-            .cta:hover .cta-icon  { transform: scale(1.1) rotate(-3deg); }
-            .cta:hover .cta-arrow { transform: translateX(6px); }
-            .cta-ln:hover .cta-arrow { color: #3b82f6; }
-            .cta-gh:hover .cta-arrow { color: #7ee787; }
-            .cta-cv:hover .cta-arrow { color: #fb923c; }
-        }
-
-        .cta:active {
-            transform: scale(0.97) !important;
-            transition: transform 0.1s ease !important;
-        }
-
+        /* ─── CTA Icon — Mobile ─── */
         .cta-icon {
-            width: clamp(42px, 8vw, 50px);
-            height: clamp(42px, 8vw, 50px);
-            border-radius: 12px;
+            width: clamp(48px, 10vw, 58px);
+            height: clamp(48px, 10vw, 58px);
+            border-radius: 14px;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -496,29 +426,95 @@
         .cta-cv .cta-icon { background: rgba(251,146,60,0.1); }
 
         .cta-icon svg {
-            width: clamp(19px, 3.8vw, 24px);
-            height: clamp(19px, 3.8vw, 24px);
+            width: clamp(22px, 4.5vw, 28px);
+            height: clamp(22px, 4.5vw, 28px);
         }
 
         .cta-body { flex: 1; }
 
         .cta-label {
-            font-size: clamp(14.5px, 2.6vw, 17px);
+            font-size: clamp(16px, 3vw, 18px);
             font-weight: 600;
-            margin-bottom: 3px;
+            margin-bottom: 4px;
         }
 
         .cta-sub {
-            font-size: clamp(11.5px, 1.7vw, 13px);
+            font-size: clamp(12.5px, 2vw, 14px);
             color: var(--muted);
             font-weight: 400;
         }
 
         .cta-arrow {
-            font-size: 19px;
+            font-size: 20px;
             color: var(--dim);
             transition: all 0.3s ease;
             flex-shrink: 0;
+        }
+
+        /* ══════════════════════════════════
+           Wide screen — Horizontal cards
+        ══════════════════════════════════ */
+        @media (min-width: 700px) {
+            .cta-group {
+                flex-direction: row;
+                align-items: stretch;
+            }
+            .cta {
+                flex: 1;
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+                padding: clamp(26px, 4vh, 42px) clamp(20px, 2.5vw, 32px);
+                gap: clamp(16px, 2.5vh, 22px);
+                justify-content: center;
+            }
+            .cta-body { flex: unset; }
+            .cta-arrow { display: none; }
+            .cta-icon {
+                width: clamp(60px, 8vw, 76px);
+                height: clamp(60px, 8vw, 76px);
+                border-radius: 20px;
+            }
+            .cta-icon svg {
+                width: clamp(28px, 4vw, 34px);
+                height: clamp(28px, 4vw, 34px);
+            }
+            .cta-label { font-size: clamp(17px, 2.1vw, 20px); }
+            .cta-sub   { font-size: clamp(12px, 1.3vw, 14px); }
+        }
+
+        /* ─── Hover effects — desktop only ─── */
+        @media (hover: hover) and (pointer: fine) {
+            .cta:hover::before { left: 100%; }
+            .cta:hover { transform: translateY(-5px); border-color: transparent; }
+            .cta-ln:hover {
+                background: rgba(10,102,194,0.09);
+                box-shadow: 0 14px 44px rgba(10,102,194,0.2),
+                            0 0 0 1px rgba(10,102,194,0.38),
+                            inset 0 1px 0 rgba(255,255,255,0.05);
+            }
+            .cta-gh:hover {
+                background: rgba(126,231,135,0.06);
+                box-shadow: 0 14px 44px rgba(126,231,135,0.14),
+                            0 0 0 1px rgba(126,231,135,0.28),
+                            inset 0 1px 0 rgba(255,255,255,0.05);
+            }
+            .cta-cv:hover {
+                background: rgba(251,146,60,0.07);
+                box-shadow: 0 14px 44px rgba(251,146,60,0.17),
+                            0 0 0 1px rgba(251,146,60,0.32),
+                            inset 0 1px 0 rgba(255,255,255,0.05);
+            }
+            .cta:hover .cta-icon  { transform: scale(1.1) rotate(-3deg); }
+            .cta:hover .cta-arrow { transform: translateX(6px); }
+            .cta-ln:hover .cta-arrow { color: #3b82f6; }
+            .cta-gh:hover .cta-arrow { color: #7ee787; }
+            .cta-cv:hover .cta-arrow { color: #fb923c; }
+        }
+
+        .cta:active {
+            transform: scale(0.97) !important;
+            transition: transform 0.1s ease !important;
         }
 
         /* ─── Reveal Animations ─── */
@@ -540,8 +536,9 @@
             to { opacity: 1; transform: translateY(0); }
         }
 
-        /* ─── Landscape small height safety ─── */
+        /* ─── Very short landscape screens ─── */
         @media (max-height: 500px) {
+            .main { padding-top: 8px; }
             .avatar-wrap { margin-bottom: 6px; }
             .badge { margin-bottom: 10px; }
             .name { font-size: clamp(22px, 5vw, 34px); margin-bottom: 4px; }
@@ -814,11 +811,10 @@
             return false;
         }
 
-        /* ── Page switching ── */
+        /* ── Page switching with history ── */
         function showResumePage() {
             pageMain.style.display   = 'none';
             pageResume.style.display = 'flex';
-            document.body.classList.add('resume-open');
             window.scrollTo(0, 0);
             history.pushState({ page: 'resume' }, '', '#resume');
         }
@@ -826,7 +822,6 @@
         function showMainPage() {
             pageResume.style.display = 'none';
             pageMain.style.display   = 'flex';
-            document.body.classList.remove('resume-open');
             window.scrollTo(0, 0);
         }
 
@@ -840,7 +835,7 @@
             history.replaceState({}, '', location.pathname);
         }
 
-        /* ── Resume card ── */
+        /* ── Resume card behavior ── */
         if (canViewPdfInline()) {
             resumeSub.textContent = 'View inline or download';
             resumeCard.addEventListener('click', () => window.open(pdfPath, '_blank', 'noopener'));

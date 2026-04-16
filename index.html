@@ -654,7 +654,7 @@
         <div class="orb orb-3"></div>
     </div>
     <div class="grid-overlay"></div>
-   <!-- <div class="noise"></div> -->
+    <div class="noise"></div> 
 
     <!-- ══════════════════════════════════
          PAGE 1 — Main Landing
@@ -837,7 +837,7 @@
 
         /* ── Resume card behavior ── */
         if (canViewPdfInline()) {
-            resumeSub.textContent = 'View inline or download';
+            resumeSub.textContent = 'View my resume';
             resumeCard.addEventListener('click', () => window.open(pdfPath, '_blank', 'noopener'));
             resumeCard.addEventListener('keydown', e => {
                 if (e.key === 'Enter' || e.key === ' ') {
@@ -846,7 +846,7 @@
                 }
             });
         } else {
-            resumeSub.textContent = 'Preview & download CV';
+            resumeSub.textContent = 'Preview & download resume';
             resumeCard.addEventListener('click', showResumePage);
             resumeCard.addEventListener('keydown', e => {
                 if (e.key === 'Enter' || e.key === ' ') {
